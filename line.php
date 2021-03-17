@@ -22,11 +22,11 @@ if ( sizeof($request_array['events']) > 0 )
    {
 		$text = $event['message']['text'];
 		
-// 	   	if($text == "ชื่อ" || $text == "ชื่ออะไร" || $text == "ชื่ออะไรครับ"|| $text == "ชื่ออะไรคะ"){
-// 			$reply_message = 'ชื่อของฉันคือ Moshu';
-// 		}
+	   	if($text == "ชื่อ" || $text == "ชื่ออะไร" || $text == "ชื่ออะไรครับ"|| $text == "ชื่ออะไรคะ"){
+			$reply_message = 'ชื่อของฉันคือ Moshu | โมชู';
+		}
 	   
-	   	if($text == "สถานการณ์โควิดวันนี้"|| $text == "covid19"|| $text == "covid-19"|| $text == "Covid-19"|| $text == "โควิด"|| $text == "โควิด-19"){
+	   	else if($text == "สถานการณ์โควิดวันนี้"|| $text == "covid19"|| $text == "covid-19"|| $text == "Covid-19"|| $text == "โควิด"|| $text == "โควิด-19"){
 		   $url = 'https://covid19.th-stat.com/api/open/today';
 		   $ch = curl_init($url);
 		   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -39,10 +39,8 @@ if ( sizeof($request_array['events']) > 0 )
 		   
 		   $obj = json_decode($result);
 		   
-		   $reply_message = $result;
-		   $reply_message = 'ติดเชื้อสะสม :'. $obj->{'Confirmed'} .' คน'.<br>
-			   	    'รักษาหายแล้ว : '.$obj->{'Recovered'} . ' คน'<br>.
-			   	    'ผู้เสียชีวิต : '. .$obj->{'Deaths'}. ' คน';
+		   //$reply_message = $result;
+		   $reply_message = 'ติดเชื้อสะสม :'. $obj->{'Confirmed'} .' คน'.<br>.'รักษาหายแล้ว : '.$obj->{'Recovered'} . ' คน'<br>.'ผู้เสียชีวิต : '. .$obj->{'Deaths'}. ' คน';
 	
 	        }	
 	   
